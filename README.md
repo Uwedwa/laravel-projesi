@@ -29,10 +29,15 @@ PHP 8.3 veya daha büyük bir versiyonunu istediğini fark ettim Dockerfile'ye y
 Dockerfile [örneklerini](https://docs.docker.com/reference/dockerfile/) inceliyorum
 Kısaca projenin çalışacağı konteynırın işletim sistemini, bağımlılığını, nereden çalışacağını ve projeyi çalıştırmak için tek bir komut gerekiyorsa o komutları içinde bulunduran konteynırlaştırmamıza yarayan dosya diyebiliriz
 Bizim projemizde gereksinimleri seçmemiz lazım
+Bu [Laravel gereksinimleri](https://laravel.com/framework/docs/deployment#server-requirements) bunu alpine'de aramam gerek Dockerfile tabanı olarak alpine kullanmak istiyorum
+İçinde composer kullanabilmem için docker exec ile konteynere girip elle kuracağımı düşünüyordum böyle bir [repo](https://github.com/mlocati/docker-php-extension-installer) keşfettim ve Dockerfile içine koyacağım
+Laravel için bağımlılıkları da Alpine reposunda taramam gerek onun içinde böyle bir [repo](https://pkgs.alpinelinux.org/packages) indexi keşfettim
+Şimdi Dockerfile yapmaya başlayalım
 
 
+`nano Dockerfile` ile dosyamı yazmaya başlıyorum 
+`FROM php:8.5-alpine3.21
 
-`nano Dockerfile`
 
 
 SQL servisi olarak MariaDb seçiyorum daha az kaynak harcadığı için
