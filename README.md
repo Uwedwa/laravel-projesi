@@ -36,15 +36,6 @@ Laravel için bağımlılıkları da Alpine reposunda taramam gerek onun içinde
 
 
 `nano Dockerfile` ile dosyamı yazmaya başlıyorum 
-`FROM php:8.3-fpm-alpine
-
-ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
-RUN chmod +x /usr/local/bin/install-php-extensions && \
-    install-php-extensions pdo_mysql redis bcmath exif pcntl zip
-
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-WORKDIR /var/www/html
 
 From php:8.3 alpineden 8.3 phpyi çekiyor
 M'locatiyi çekiyor
@@ -55,58 +46,6 @@ Workdir konteynırın uygulamasının nerede çalışacağını belirliyor
 
 Docker composeyi de oluşutrdum
 
-
-services:
-  projem:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    restart: always
-    volumes:
-      - ./src:/var/www/html
-      - ./etc/php/local.ini:/usr/local/etc/php/conf.d/local.ini
-    networks:
-      - laravel-network
-
-  web:
-    image: nginx:alpine
-    restart: always
-    ports:
-      - "80:80"
-    volumes:
-      - ./src:/var/www/html
-      - ./etc/nginx/default.conf:/etc/nginx/conf.d/default.conf
-    depends_on:
-      - projem
-    networks:
-      - laravel-network
-
-  db:
-    image: mariadb:10.11
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: laravel_projem
-      MYSQL_USER: enes
-      MYSQL_PASSWORD: enes123
-    volumes:
-      - db-data:/var/lib/mysql
-      - ./etc/mysql/my.cnf:/etc/mysql/my.cnf
-    networks:
-      - laravel-network
-
-  redis:
-    image: redis:alpine
-    restart: always
-    networks:
-      - laravel-network
-
-networks:
-  laravel-network:
-    driver: bridge
-
-volumes:
-  db-data:
 
 
   kısaca alpine tabanlı redis'i çekiyor mariadb çekiyor mysql yerine tercih ettim nginx'i çekip port 80de başlatıyor projem adlı uygulama da dockerfileden konteynırı oluştur docker compose up -d ile başlatıyorum
