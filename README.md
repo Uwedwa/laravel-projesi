@@ -62,5 +62,8 @@ Docker composeyi de oluşutrdum
 
 Laravel kuruldu
 
-
+tekrardan exec ile girip docker compose exec app php artisan migrate yapınca ilk kurulumdaki yer geldi ve artık sqlite yerine mariadb kullanıyor proje tamamlandı
  Kurulduktan sonra ilerleyemediğimi fark ettim Redis'e veritabanını tanıtmam gerekiyormuş
+
+ src klasörünün içine .env oluşturmuş root yetkisiyle düzenlyiorum 
+ yorum satırlarını kaldırıp veri tabanımı yazıyorum ana klasöre dönüp docker compose restart atıyorum  SQLSTATE[HY000] [2002] Connection refused hatası aldım dockerda her uygulamanın izole çalıştığını unutup 127.0.0.1 yazmamamız gerekmiş onun yerine aynı ağda bulundukları için isimlerini yazmak yeterli
