@@ -77,7 +77,7 @@ services:
       - ./src:/var/www/html
       - ./etc/nginx/default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
-      - app
+      - projem
     networks:
       - laravel-network
 
@@ -113,3 +113,13 @@ volumes:
 
 
   sorunsuz başladı ama localhost:80'den gidemedim hata aldım nginx çalışıyor ama laravel yok
+
+  Mlocati reposunu baştan incelemek istiyorum
+
+
+  Laravel'i kurmak için tek başına mlocati yetmiyormul konteynera girip composerden laravel kurmam gerekiyormuş
+
+  docker compose exec projem composer create-project --prefer-dist laravel/laravel .
+
+Laravel kuruldu
+  
