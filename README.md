@@ -122,4 +122,6 @@ volumes:
   docker compose exec projem composer create-project --prefer-dist laravel/laravel .
 
 Laravel kuruldu
-  
+
+
+ Kurulduktan sonra ilerleyemediğimi fark ettim Redis'e veritabanını tanıtmam gerekiyormuş
