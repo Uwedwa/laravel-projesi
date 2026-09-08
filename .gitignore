@@ -1,0 +1,17 @@
+# Laravel uygulama dosyaları (composer ile kurulacak)
+src/
+
+# Ortam dosyası (hassas bilgi içerir)
+.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker volumes
+db-data/
